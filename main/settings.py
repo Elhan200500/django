@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-h=9c&8w@7wgmeu0@ubcvonjmx0*!@_pba=bk9ite$n9ego$y-b
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['local']
 
 
 # Application definition
@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'accounts.apps.AccountsConfig',
+    'posts.apps.PostsConfig'
     'posts',
 ]
 
@@ -52,8 +54,11 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'main.urls'
 
+
+LOGIN_URL = '/login/'
+
 TEMPLATES = [
-    {
+     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
@@ -63,6 +68,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'accounts.context_processors.get_time'
             ],
         },
     },

@@ -4,33 +4,35 @@
 {% block title %} Post create {% endblock %}
 
 {% block content %}
+
+
 <div style="margin-top: 40px">
     <form id="CreateForm" action="" method="POST" >
         {% csrf_token %}
 
         {% if not created %}
         <div>
-        <input type="text"  name="title" placeholder="Title" />
-        </div>
-        <div style="margin-top: 8px">
-        <textarea name="description"  placeholder="Description" ></textarea>
+       {{ form.as_p }}
         </div>
         <div style="margin-top: 5px">
         <button type="submit"> Create post</button>
         </div>
         <h5 id="myhfive"> </h5>
-    </form>
-    {% else %}
 
-    <h3> You created an object with title {{ post_object }} </h3>
+    </form>
+    {% else%}
+
+    <h3> You created objects <a href="/posts/{{post_object.id }}"> {{ post_object }}</a> </h3>
 
     {% endif %}
 
     <button onclick="mainFunction()">Click me </button>
     <br>
     {% if message  %}
+
     <p>{{ message  }}</p>
     {% endif %}
+
 </div>
 <script src="{% static 'js/main.js'  %}"> </script>
 {% endblock  %}

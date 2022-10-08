@@ -53,3 +53,5 @@ class Subject(models.Model):
     teachers = models.ManyToManyField(Teacher)
     title = models.CharField(max_length=250)
 """
+
+
